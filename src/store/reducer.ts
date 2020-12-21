@@ -1,13 +1,13 @@
-const initState={
+const initState = {
 
 }
-interface actionType{
-    type:string,
-    payload:any
+type actionType = {
+    type: string,
+    payload: any
 }
-export function (state:any,action:actionType){
+export function reducer(state: any = initState, action: actionType) {
     switch (action.type) {
-        
+
         default:
             break;
     }

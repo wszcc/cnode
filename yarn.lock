@@ -1873,6 +1873,13 @@
   resolved "https://registry.npm.taobao.org/@types/aria-query/download/@types/aria-query-4.2.0.tgz#14264692a9d6e2fa4db3df5e56e94b5e25647ac0"
   integrity sha1-FCZGkqnW4vpNs99eVulLXiVkesA=
 
+"@types/axios@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.npm.taobao.org/@types/axios/download/@types/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
+  integrity sha1-7CMA++fX3d1+udOr+HmZlkyvzkY=
+  dependencies:
+    axios "*"
+
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.7":
   version "7.1.12"
   resolved "https://registry.npm.taobao.org/@types/babel__core/download/@types/babel__core-7.1.12.tgz#4d8e9e51eb265552a7e4f1ff2219ab6133bdfb2d"
@@ -1957,6 +1964,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/history@*":
+  version "4.7.8"
+  resolved "https://registry.npm.taobao.org/@types/history/download/@types/history-4.7.8.tgz?cache=0&sync_timestamp=1605055271942&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fhistory%2Fdownload%2F%40types%2Fhistory-4.7.8.tgz#49348387983075705fe8f4e02fb67f7daaec4934"
+  integrity sha1-STSDh5gwdXBf6PTgL7Z/farsSTQ=
+
 "@types/hoist-non-react-statics@^3.3.0":
   version "3.3.1"
   resolved "https://registry.npm.taobao.org/@types/hoist-non-react-statics/download/@types/hoist-non-react-statics-3.3.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fhoist-non-react-statics%2Fdownload%2F%40types%2Fhoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
@@ -2022,6 +2034,13 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
+"@types/node-sass@^4.11.1":
+  version "4.11.1"
+  resolved "https://registry.npm.taobao.org/@types/node-sass/download/@types/node-sass-4.11.1.tgz#bda27c5181cbf7c090c3058e119633dfb2b6504c"
+  integrity sha1-vaJ8UYHL98CQwwWOEZYz37K2UEw=
+  dependencies:
+    "@types/node" "*"
+
 "@types/node@*":
   version "13.9.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.9.2.tgz#ace1880c03594cc3e80206d96847157d8e7fa349"
@@ -2073,6 +2092,23 @@
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
     redux "^4.0.0"
+
+"@types/react-router-dom@^5.1.6":
+  version "5.1.6"
+  resolved "https://registry.npm.taobao.org/@types/react-router-dom/download/@types/react-router-dom-5.1.6.tgz?cache=0&sync_timestamp=1605057037067&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Freact-router-dom%2Fdownload%2F%40types%2Freact-router-dom-5.1.6.tgz#07b14e7ab1893a837c8565634960dc398564b1fb"
+  integrity sha1-B7FOerGJOoN8hWVjSWDcOYVksfs=
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+    "@types/react-router" "*"
+
+"@types/react-router@*", "@types/react-router@^5.1.8":
+  version "5.1.8"
+  resolved "https://registry.npm.taobao.org/@types/react-router/download/@types/react-router-5.1.8.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Freact-router%2Fdownload%2F%40types%2Freact-router-5.1.8.tgz#4614e5ba7559657438e17766bb95ef6ed6acc3fa"
+  integrity sha1-RhTlunVZZXQ44Xdmu5Xvbtasw/o=
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
 
 "@types/react@*":
   version "17.0.0"
@@ -2834,6 +2870,13 @@ axe-core@^4.0.2:
   version "4.1.1"
   resolved "https://registry.npm.taobao.org/axe-core/download/axe-core-4.1.1.tgz?cache=0&sync_timestamp=1608311268242&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Faxe-core%2Fdownload%2Faxe-core-4.1.1.tgz#70a7855888e287f7add66002211a423937063eaf"
   integrity sha1-cKeFWIjih/et1mACIRpCOTcGPq8=
+
+axios@*:
+  version "0.21.0"
+  resolved "https://registry.npm.taobao.org/axios/download/axios-0.21.0.tgz?cache=0&sync_timestamp=1603468716105&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Faxios%2Fdownload%2Faxios-0.21.0.tgz#26df088803a2350dff2c27f96fef99fe49442aca"
+  integrity sha1-Jt8IiAOiNQ3/LCf5b++Z/klEKso=
+  dependencies:
+    follow-redirects "^1.10.0"
 
 axobject-query@^2.2.0:
   version "2.2.0"
@@ -5408,6 +5451,11 @@ follow-redirects@^1.0.0:
   integrity sha512-4eyLK6s6lH32nOvLLwlIOnr9zrL8Sm+OvW4pVTJNoXeGzYIkHVf+pADQi+OJ0E67hiuSLezPVPyBcIZO50TmmQ==
   dependencies:
     debug "^3.0.0"
+
+follow-redirects@^1.10.0:
+  version "1.13.1"
+  resolved "https://registry.npm.taobao.org/follow-redirects/download/follow-redirects-1.13.1.tgz?cache=0&sync_timestamp=1607916915121&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffollow-redirects%2Fdownload%2Ffollow-redirects-1.13.1.tgz#5f69b813376cee4fd0474a3aba835df04ab763b7"
+  integrity sha1-X2m4Ezds7k/QR0o6uoNd8Eq3Y7c=
 
 for-in@^1.0.2:
   version "1.0.2"
