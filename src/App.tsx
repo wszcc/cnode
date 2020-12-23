@@ -1,17 +1,10 @@
-import React,{useEffect} from 'react';
-import './App.css';
-import { requestHomePage } from "./apis/request";
-function App() {
-  useEffect(()=>{
-    requestHomePage().then(res=>{
-      console.log(res)
-    })
-  },[])
-  return (
-    <div className="App">
-     App
-    </div>
-  );
-}
+import React, { FC } from "react";
+import './App.scss'
+import RouterView from "./router/index";
+const App: FC = () => (
+  <div className="App">
+    <RouterView />
+  </div>
+);
 
 export default App;
