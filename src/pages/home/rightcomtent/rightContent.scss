@@ -1,0 +1,38 @@
+.right-content{
+    position: absolute;
+    left: 1140px;
+    top: 65px;
+    width: 280px;
+    background-color: #E1E1E1;
+    .ruby-img{
+        margin-left: -15px;
+    }
+    .erweima{
+        width: 230px;
+        height: 230px;
+    }
+    .top-content{
+        padding: 15px;
+        line-height: 22px;
+        font-size: 15px;
+        background-color: white;
+        span{
+            display: block;
+            font-size: 13px;
+            color: #7B92A2;
+            margin-top: 15px;
+        }
+        button{
+            background-color: #5BC0DE;
+            color: white;
+            border: none;
+            padding: 7px;
+            width: 150px;
+            height: 35px;
+            &:hover{
+                background-color: #2F96B4;
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -28,6 +28,10 @@
             border-bottom: 1px solid #EFEFEF;
             line-height: 50px;
             display: flex;
+            position: relative;
+           &:hover{
+               background-color: #F6F6F6;
+           }
             .img{
                 width: 30px;
                 height: 30px;
@@ -39,8 +43,62 @@
                 }
             }
             span{
-                margin-left: 20px;
-                font-size: 13px;
+                margin-left: 10px;
+                font-size: 12px;
+                color: #CECECE;
+                span{
+                    font-size: 13px;
+                    color: #444444;
+                }
+            }
+            .type{
+                position: absolute;
+                left: 120px;
+                .top{
+                    background-color: #80BD01;
+                    color: white;
+                    padding: 2px;
+                    border-radius: 2px;
+                }
+                .share{
+                    background-color: #F7F7F7;
+                    padding: 2px;
+                    border-radius: 2px;
+
+                }
+            }
+            .context{
+                width: 500px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                color: black;
+                font-size: 15px;
+                position: absolute;
+                left: 200px;
+                cursor: pointer;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+            .left-img{
+                width: 20px;
+                height: 20px;
+                margin-left: 10px;
+                margin-top: 5px;
+                position: absolute;
+                left: 950px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .time{
+                margin-right: 10px;
+                margin-left: auto;
+                color: black;
             }
         }
     }
