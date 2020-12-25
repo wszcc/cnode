@@ -3,6 +3,7 @@ import requestData from "../apis/index";
 import {
   REQUEST_SAGA_HOMEPAGE_DATA,
   REQUEST_SAGE_DETAIL_DATA,
+  REQUEST_SAGA_USER_INFO
 } from "./actionTypes";
 import { AxiosResponse } from "axios";
 type actionType = {
@@ -34,6 +35,21 @@ export function* fetchDetailPageData(action: actionType) {
       data,
     });
     yield put({ type: REQUEST_SAGE_DETAIL_DATA, res });
+  } catch (error) {
+    yield put({ type: "FETCH_FAILED", error });
+  }
+}
+
+// 主题详情的sagaAction
+export function* fetchUserInfo(action: actionType) {
+  const { url, type, data } = action.payload;
+  try {
+    const res: AxiosResponse = yield call(requestData, {
+      url,
+      type,
+      data,
+    });
+    yield put({ type: REQUEST_SAGA_USER_INFO, res });
   } catch (error) {
     yield put({ type: "FETCH_FAILED", error });
   }

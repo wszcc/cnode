@@ -4,9 +4,20 @@ import China from "../../../assets/imgs/china.png";
 import php from "../../../assets/imgs/php.png";
 import Ruby from "../../../assets/imgs/Ruby.png";
 import erweima from "../../../assets/imgs/erweima.png";
-const BodyContent: React.FC = () => {
+import { connect } from 'react-redux'
+import { Link } from "react-router-dom";
+type propsType ={
+  isLogin:boolean
+}
+const BodyContent: React.FC<propsType> = (props) => {
+
   return (
     <div className="body-content">
+      {
+        props.isLogin?<div className="publish">
+        <Link to='/theme'><span >发布话题</span></Link>
+      </div>:''
+      }
       <Card
         title="无人回复的话题"
         bordered={false}
@@ -52,5 +63,9 @@ const BodyContent: React.FC = () => {
     </div>
   );
 };
-
-export default BodyContent;
+const mapState=(state:any)=>{
+  return {
+    isLogin:state.isLogin
+  }
+}
+export default connect(mapState)(BodyContent);

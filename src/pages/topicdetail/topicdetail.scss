@@ -9,6 +9,21 @@
         font-size: 25px;
         font-weight: 800;
         border: 1px solid #CECECE;
+        position: relative;
+        .collect{
+            position: absolute;
+            left: 1200px;
+            top: 40px;
+            width: 50px;
+            background-color: #80BD01;
+            height: 30px;
+            font-size: 15px;
+            color: white;
+            border: none;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 4px;
+        }
         .info{
             line-height: 30px;
             color: #CECECE;
@@ -64,10 +79,32 @@
     .repiles{
         margin-top: 50px;
         p{
-            line-height: 80px;
-            border-bottom: 1px solid #E1E1E1;
             img{
                 width: 1200px;
+            }
+        }
+        .input-header{
+            width: 1270px;
+            margin-left: 70px;
+            margin-top: 70px;
+            line-height: 40px;
+            background-color: #F6F6F6;
+            font-size: 15px;
+            padding-left: 15px;
+        }
+        .input-button{
+            width: 1270px;
+            padding-top: 20px;
+            color: white;
+            background-color: white;
+            margin-left: 70px;
+            button{
+                width: 60px;
+                height: 30px;
+                background-color: #80BD01;
+                border: none;
+                font-size: 15px;
+                margin-left: 18px;
             }
         }
     }

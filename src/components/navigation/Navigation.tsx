@@ -3,21 +3,63 @@ import './navigation.scss'
 import logoImg from '../../assets/imgs/logo.svg'
 import { Input } from 'antd';
 import { SearchOutlined  } from '@ant-design/icons';
-const Navigation:React.FC = ()=>{
+import { connect } from 'react-redux'
+import { logoutAction,loginAction } from '../../store/actionCreator'
+import { withRouter,RouteComponentProps } from 'react-router'
+
+type propsType =RouteComponentProps&{
+    isLogin:boolean,
+    dispatchLogoutAction:()=>void,
+    dispatchLoginAction:()=>void,
+}
+const Navigation:React.FC<propsType> =(props)=>{
+    function logout(){
+        localStorage.removeItem('accessToken')
+        props.dispatchLogoutAction()
+        props.history.replace('/home')
+    }
+    function login(){
+        localStorage.setItem('accessToken','f809663b-28c7-4e70-a26c-834fc061d93a')
+        props.dispatchLoginAction()
+    }
     return (
         <div className='navigation'>
             <img src={logoImg} alt=""/>
             <Input bordered={false} size='small' className='input' prefix={<SearchOutlined />} />
             <ul>
                 <li>首页</li>
+                {
+                    props.isLogin?<li>未读消息</li>:''
+                }
                 <li>新手入门</li>
                 <li>API</li>
-                <li>新手入门</li>
-                <li>注册</li>
-                <li>登录</li>
+                <li>关于</li>
+                <li>设置</li>
+                {
+                    props.isLogin?'':<li>注册</li>
+                }
+                {
+                    props.isLogin?<li onClick={logout}>退出</li>:<li onClick={login}>登录</li>
+                }
             </ul>
         </div>
     )
 }
-
-export default Navigation
+const mapState=(state:any)=>{
+    return {
+        isLogin:state.isLogin
+    }
+}
+const mapDispatch =(dispatch:any)=>{
+    return {
+        dispatchLogoutAction(){
+            const disLogoutAction =logoutAction()
+            dispatch(disLogoutAction)
+        },
+        dispatchLoginAction(){
+            const disLoginAction =loginAction()
+            dispatch(disLoginAction)
+        }
+    }
+}
+export default connect(mapState,mapDispatch)(withRouter(Navigation))

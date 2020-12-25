@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import getTime from "../../utils/getTime";
+import { connect } from 'react-redux'
 type propsType = {
   titleData: any;
+  isLogin:boolean
 };
-const Header: React.FC<propsType> = ({ titleData }) => {
+const Header: React.FC<propsType> = ({ titleData,isLogin }) => {
   return (
     <div className="header">
       <div className="title">
@@ -22,8 +24,15 @@ const Header: React.FC<propsType> = ({ titleData }) => {
             } ●${titleData.data.data.visit_count} 次浏览`
         }
       </div>
+      {
+        isLogin?<a className='collect'>收藏</a>:''
+      }
     </div>
   );
 };
-
-export default Header;
+const mapState=(state:any)=>{
+  return {
+    isLogin:state.isLogin
+  }
+}
+export default connect(mapState)(Header);

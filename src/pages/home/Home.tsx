@@ -8,7 +8,8 @@ import Card from "./card/Card";
 import RightContent from "./rightcomtent/RightComtent";
 type propsType = {
   name?: string;
-  requestHomePageData: (a: requestParamsType) => void;
+  requestHomePageData: (params: requestParamsType) => void;
+  requestUserInfo: (params: requestParamsType) => void;
   homeData: AxiosResponse;
 };
 type requestParamsType = {
