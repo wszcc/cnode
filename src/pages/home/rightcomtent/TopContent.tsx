@@ -4,7 +4,7 @@ import { loginAction } from "../../../store/actionCreator";
 import { Card } from "antd";
 import { Link } from 'react-router-dom'
 import profile from "../../../assets/imgs/profile.png";
-
+import { accessToken } from '../../../store/actionTypes'
 type propsType = {
   dispatchLoginAction: () => void;
   isLogin: boolean;
@@ -12,7 +12,7 @@ type propsType = {
 
 const TopContetn: React.FC<propsType> = (props) => {
   function login() {
-    localStorage.setItem("accessToken", "f809663b-28c7-4e70-a26c-834fc061d93a");
+    localStorage.setItem("accessToken", accessToken);
     props.dispatchLoginAction();
   }
   return (

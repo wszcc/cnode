@@ -3,17 +3,65 @@ import "./createTheme.scss";
 import E from "wangeditor";
 import { Select, Card, Input } from "antd";
 import Navigation from "../../components/navigation/Navigation";
+import { accessToken } from "../../store/actionTypes";
+import requestCreateTheme from '../../apis/index'
 const { Option } = Select;
+type createThemeTypes = {
+  accesstoken: string;
+  title: string;
+  tab: string;
+  content: string;
+};
+type stateType={
+  accesstoken: string,
+      title:string,
+      tab: string,
+      content: string,
+      editor:any
+}
+type propsType={
 
-class createTheme extends React.Component {
+}
+class createTheme extends React.Component<propsType,stateType> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      accesstoken: accessToken,
+      title: "",
+      tab: "分享",
+      content: "",
+      editor:null
+    };
+  }
   componentDidMount() {
-    const editor = new E("#edit");
+    const editor=new E("#edit")
     editor.config.zIndex = 100;
     editor.create();
+    this.setState({editor})
   }
-  
-  handleChange = (value: any) => {
-    console.log(`selected ${value}`);
+  async dispatchCreateTheme(params:createThemeTypes){
+    const res=await requestCreateTheme({
+      url:'/topics',type:'POST',data:params
+    })
+    console.log(res)
+  }
+  createTheme = () => {
+    this.setState({
+      content:this.state.editor.txt.text()
+    },()=>{
+      const {accesstoken,title,tab,content}=this.state
+      this.dispatchCreateTheme({accesstoken,title,tab,content})
+    })
+  };
+  handleTabChange = (value: string) => {
+    this.setState({
+      tab: value,
+    });
+  };
+  handleTitleChange = (e: any) => {
+    this.setState({
+      title: e.nativeEvent.data,
+    });
   };
   render() {
     return (
@@ -28,7 +76,7 @@ class createTheme extends React.Component {
             <Select
               defaultValue="分享"
               style={{ width: 120, zIndex: 1000 }}
-              onChange={this.handleChange}
+              onChange={this.handleTabChange}
             >
               <Option value="share">分享</Option>
               <Option value="ask">问答</Option>
@@ -39,9 +87,10 @@ class createTheme extends React.Component {
           <Input
             placeholder="请输入标题"
             style={{ width: 1070, margin: 20, marginLeft: 0 }}
+            onChange={this.handleTitleChange}
           />
           <div id="edit"></div>
-          <a className="submit">提交</a>
+          <a className="submit" onClick={this.createTheme}>提交</a>
         </Card>
         <div className="right-comtent">
           <Card
@@ -61,7 +110,6 @@ class createTheme extends React.Component {
           >
             <p>尽量把话题要点浓缩到标题里</p>
             <p>代码含义和报错可在 SegmentFault 提问</p>
-            
           </Card>
         </div>
       </div>

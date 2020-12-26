@@ -6,7 +6,7 @@ import { SearchOutlined  } from '@ant-design/icons';
 import { connect } from 'react-redux'
 import { logoutAction,loginAction } from '../../store/actionCreator'
 import { withRouter,RouteComponentProps } from 'react-router'
-
+import {accessToken} from '../../store/actionTypes'
 type propsType =RouteComponentProps&{
     isLogin:boolean,
     dispatchLogoutAction:()=>void,
@@ -19,7 +19,7 @@ const Navigation:React.FC<propsType> =(props)=>{
         props.history.replace('/home')
     }
     function login(){
-        localStorage.setItem('accessToken','f809663b-28c7-4e70-a26c-834fc061d93a')
+        localStorage.setItem('accessToken',accessToken)
         props.dispatchLoginAction()
     }
     return (

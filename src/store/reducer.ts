@@ -3,7 +3,8 @@ import {
   REQUEST_SAGE_DETAIL_DATA,
   LOGIN,
   LOGOUT,
-  REQUEST_SAGA_USER_INFO
+  REQUEST_SAGA_USER_INFO,
+  REQUEST_SAGA_COLLECT_THEME,
 } from "./actionTypes";
 import isLogin from '../utils/isLogin'
 const initState = {
@@ -34,6 +35,9 @@ export default function reducer(
       return { ...state };
     case REQUEST_SAGA_USER_INFO:
       state.userInfo = action.res;
+      return { ...state };
+    case REQUEST_SAGA_COLLECT_THEME:
+      state.collectTheme = action.res;
       return { ...state };
     default:
       return { ...state };
