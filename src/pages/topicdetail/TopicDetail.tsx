@@ -28,12 +28,13 @@ const TopicDetail: React.FC<propsType> = (props: propsType) => {
       },
     });
   },[props.match.params.id]);
+   
   return (
     <div className="topic-detail">
       <Navigation />
       {props.detailData ? (
         <>
-          <Header isEdit={isEdit} titleData={props.detailData} />
+          <Header  isEdit={isEdit} titleData={props.detailData} />
           <Card
             title={""}
             bordered={false}

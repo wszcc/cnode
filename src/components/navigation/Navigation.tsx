@@ -22,6 +22,9 @@ const Navigation:React.FC<propsType> =(props)=>{
         localStorage.setItem('accessToken',accessToken)
         props.dispatchLoginAction()
     }
+    function handleToMessage(){
+        props.history.push('/message')
+    }
     return (
         <div className='navigation'>
             <img src={logoImg} alt=""/>
@@ -29,7 +32,7 @@ const Navigation:React.FC<propsType> =(props)=>{
             <ul>
                 <li>首页</li>
                 {
-                    props.isLogin?<li>未读消息</li>:''
+                    props.isLogin?<li onClick={handleToMessage}>未读消息</li>:''
                 }
                 <li>新手入门</li>
                 <li>API</li>

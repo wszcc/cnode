@@ -4,7 +4,9 @@ import {
   LOGIN,
   LOGOUT,
   REQUEST_USER_INFO,
-  REQUEST_COLLECT_THEME
+  REQUEST_COLLECT_THEME,
+  REQUEST_USER_THEME_INFO,
+  REQUEST_MESSAGE
 } from "./actionTypes";
 
 interface actionType {
@@ -30,12 +32,22 @@ export const logoutAction = (): actionType => ({
   type: LOGOUT,
 });
 
-export const getUserInfo = (payload:any) => ({
+export const getUserInfo = (payload:any):actionType => ({
   type: REQUEST_USER_INFO,
   payload,
 });
 
-export const getUserCollectTheme = (payload:any) => ({
+export const getUserCollectTheme = (payload:any):actionType => ({
   type: REQUEST_COLLECT_THEME,
   payload
+});
+
+export const getUserThemeInfo = (payload:any):actionType => ({
+  type: REQUEST_USER_THEME_INFO,
+  payload
+});
+
+export const getMessage = (payload:string):actionType => ({
+  type: REQUEST_MESSAGE,
+  payload,
 });

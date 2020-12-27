@@ -4,7 +4,8 @@ import {
   REQUEST_SAGA_HOMEPAGE_DATA,
   REQUEST_SAGE_DETAIL_DATA,
   REQUEST_SAGA_USER_INFO,
-  REQUEST_SAGA_COLLECT_THEME
+  REQUEST_SAGA_COLLECT_THEME,
+  REQUEST_SAGA_MESSAGE
 } from "./actionTypes";
 import { AxiosResponse } from "axios";
 type actionType = {
@@ -66,6 +67,21 @@ export function* fetchUserCollect(action: actionType) {
       data,
     });
     yield put({ type:REQUEST_SAGA_COLLECT_THEME, res });
+  } catch (error) {
+    yield put({ type: "FETCH_FAILED", error });
+  }
+}
+
+// 获取已读消息和未读消息
+export function* fetchMessage(action: actionType) {
+  const { url, type, data } = action.payload;
+  try {
+    const res: AxiosResponse = yield call(requestData, {
+      url,
+      type,
+      data,
+    });
+    yield put({ type:REQUEST_SAGA_MESSAGE, res });
   } catch (error) {
     yield put({ type: "FETCH_FAILED", error });
   }

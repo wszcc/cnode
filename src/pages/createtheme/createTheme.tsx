@@ -4,7 +4,7 @@ import E from "wangeditor";
 import { Select, Card, Input } from "antd";
 import Navigation from "../../components/navigation/Navigation";
 import { accessToken } from "../../store/actionTypes";
-import requestCreateTheme from '../../apis/index'
+import requestCreateTheme from "../../apis/index";
 const { Option } = Select;
 type createThemeTypes = {
   accesstoken: string;
@@ -12,57 +12,61 @@ type createThemeTypes = {
   tab: string;
   content: string;
 };
-type stateType={
-  accesstoken: string,
-      title:string,
-      tab: string,
-      content: string,
-      editor:any
-}
-type propsType={
-
-}
-class createTheme extends React.Component<propsType,stateType> {
+type stateType = {
+  accesstoken: string;
+  tab: string;
+  content: string;
+  editor: any;
+  title:string
+};
+type propsType = {};
+class createTheme extends React.Component<propsType, stateType> {
   constructor(props: any) {
     super(props);
     this.state = {
       accesstoken: accessToken,
-      title: "",
-      tab: "分享",
+      tab: "share",
       content: "",
-      editor:null
+      editor: null,
+      title:''
     };
   }
   componentDidMount() {
-    const editor=new E("#edit")
+    const editor = new E("#edit");
     editor.config.zIndex = 100;
     editor.create();
-    this.setState({editor})
+    this.setState({ editor });
   }
-  async dispatchCreateTheme(params:createThemeTypes){
-    const res=await requestCreateTheme({
-      url:'/topics',type:'POST',data:params
-    })
+  async dispatchCreateTheme(params: createThemeTypes) {
+    const res = await requestCreateTheme({
+      url: "/topics",
+      type: "POST",
+      data: params,
+    });
     console.log(res)
   }
   createTheme = () => {
-    this.setState({
-      content:this.state.editor.txt.text()
-    },()=>{
-      const {accesstoken,title,tab,content}=this.state
-      this.dispatchCreateTheme({accesstoken,title,tab,content})
-    })
+    this.setState(
+      {
+        content: this.state.editor.txt.text(),
+      },
+      () => {
+        const { accesstoken, title, tab, content } = this.state;
+        this.dispatchCreateTheme({ accesstoken, title, tab, content });
+      }
+    );
   };
   handleTabChange = (value: string) => {
     this.setState({
       tab: value,
     });
   };
-  handleTitleChange = (e: any) => {
+  handleTitleChange=()=>{
+    let inputValue:any =document.getElementById('title-input')
     this.setState({
-      title: e.nativeEvent.data,
-    });
-  };
+      title:inputValue.value
+    })
+  }
   render() {
     return (
       <div className="create-theme">
@@ -85,12 +89,15 @@ class createTheme extends React.Component<propsType,stateType> {
             </Select>
           </div>
           <Input
+          onChange={this.handleTitleChange}
+            id="title-input"
             placeholder="请输入标题"
             style={{ width: 1070, margin: 20, marginLeft: 0 }}
-            onChange={this.handleTitleChange}
           />
           <div id="edit"></div>
-          <a className="submit" onClick={this.createTheme}>提交</a>
+          <a className="submit" onClick={this.createTheme}>
+            提交
+          </a>
         </Card>
         <div className="right-comtent">
           <Card

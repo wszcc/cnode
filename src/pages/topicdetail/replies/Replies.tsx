@@ -1,4 +1,4 @@
-import React, { createElement, useState, useRef } from "react";
+import React, { createElement, useState } from "react";
 import { Comment, Tooltip, Avatar, Card, Input } from "antd";
 import moment from "moment";
 import { connect } from "react-redux";
@@ -53,7 +53,7 @@ const Replies: React.FC<propsType> = (props) => {
 
   const actions = props.isLogin
     ? [
-        <Tooltip key="comment-basic-like" title="Like">
+        <Tooltip key="comment-basic-like" title="点赞">
           <span onClick={like}>
             {createElement(action === "liked" ? LikeFilled : LikeOutlined)}
             <span className="comment-action">{likes}</span>

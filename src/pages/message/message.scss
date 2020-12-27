@@ -1,0 +1,14 @@
+.message{
+    background-color: #E1E1E1;
+    min-height: 1800px;
+    .item{
+        .title{
+            color: blue;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+       
+    }
+    
+}

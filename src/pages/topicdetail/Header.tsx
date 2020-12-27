@@ -5,17 +5,19 @@ import requestCollect from "../../apis/index";
 import requestCancelCollect from "../../apis/index";
 import { accessToken } from "../../store/actionTypes";
 import { EditOutlined } from "@ant-design/icons";
-import { withRouter,RouteComponentProps } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from "react-router-dom";
+import { getUserThemeInfo } from "../../store/actionCreator";
 
 type propsType = {
   titleData: any;
   isLogin: boolean;
   isEdit: any;
+  dispatchThemeInfo: (payload: any) => void;
 };
 
-const Header: React.FC<propsType&RouteComponentProps> = (props) => {
-  const { titleData, isLogin, isEdit }=props
-  console.log(isEdit);
+const Header: React.FC<propsType & RouteComponentProps> = (props) => {
+  const { titleData, isLogin, isEdit } = props;
+  console.log(titleData);
   const [jusIsCollect, setIsCollect] = useState(titleData.data.data.is_collect);
   // 判断收藏按钮状态
   function isCollect(isLogin: boolean, isCollect: boolean): ReactNode {
@@ -37,9 +39,16 @@ const Header: React.FC<propsType&RouteComponentProps> = (props) => {
       }
     }
   }
-  const handleEditClick=()=>{
-      props.history.push('/edit-theme')
-  }
+  const handleEditClick = () => {
+    const themeInfo = {
+      title: titleData.data.data.title,
+      content: titleData.data.data.content,
+      tab: titleData.data.data.tab,
+      topic_id:titleData.data.data.id
+    };
+    props.history.push("/edit-theme");
+    props.dispatchThemeInfo(themeInfo);
+  };
   const handleCollect = async () => {
     requestCollect({
       url: "/topic_collect/collect",
@@ -100,4 +109,12 @@ const mapState = (state: any) => {
     isLogin: state.isLogin,
   };
 };
-export default connect(mapState)(withRouter(Header));
+const mapDispatch = (dispatch: any) => {
+  return {
+    dispatchThemeInfo(themeInfo: any) {
+      const themeInfoAction = getUserThemeInfo(themeInfo);
+      dispatch(themeInfoAction);
+    },
+  };
+};
+export default connect(mapState, mapDispatch)(withRouter(Header));

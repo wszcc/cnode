@@ -4,6 +4,7 @@ import Profile from "../pages/profile/Profile";
 import createTheme from '../pages/createtheme/createTheme'
 import myCollect from '../pages/mycollect/myCollect'
 import editTheme from '../pages/edittheme/editTheme'
+import Message from '../pages/message/Message'
 export default [
   {
     path: "/home",
@@ -28,5 +29,9 @@ export default [
   {
     path: "/edit-theme",
     component: editTheme,
+  },
+  {
+    path: "/message",
+    component: Message,
   },
 ];
