@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import getTime from "../../../utils/getTime";
 import { LikeOutlined, LikeFilled } from "@ant-design/icons";
 import requestReply from "../../../apis/index";
+import like from "../../../apis/index";
+import unLike from "../../../apis/index";
 import { accessToken } from "../../../store/actionTypes";
 const { TextArea } = Input;
 
@@ -16,14 +18,9 @@ type propsType = {
 };
 
 const Replies: React.FC<propsType> = (props) => {
-  const [likes, setLikes] = useState<number | string>(0);
-  const [action, setAction] = useState<null | string>(null);
   const [repliesArr, setRepliesArr] = useState(props.repliesArr);
   const [replyCount, setReplyCount] = useState(props.repliesArr.length);
-  const like = () => {
-    setLikes(1);
-    setAction("liked");
-  };
+
   function handleReply() {
     const inputElement: any = document.getElementById("input-textarea");
     const inputInfo = {
@@ -51,16 +48,35 @@ const Replies: React.FC<propsType> = (props) => {
     setReplyCount(replyCount + 1);
   }
 
-  const actions = props.isLogin
-    ? [
-        <Tooltip key="comment-basic-like" title="点赞">
-          <span onClick={like}>
-            {createElement(action === "liked" ? LikeFilled : LikeOutlined)}
-            <span className="comment-action">{likes}</span>
-          </span>
-        </Tooltip>,
-      ]
-    : [];
+  function handleLike(id: string) {
+    like({
+      url: `/reply/${id}/ups`,
+      type: "POST",
+      data: { accesstoken: accessToken },
+    })
+    for (let i = 0; i < repliesArr.length; i++) {
+      if (repliesArr[i].id === id) {
+        repliesArr[i].is_uped = !repliesArr[i].is_uped;
+        setRepliesArr((repliesArr) => [...repliesArr]);
+        break;
+      }
+    }
+  }
+
+  function handleUnLike(id: string) {
+    unLike({
+      url: `/reply/${id}/ups`,
+      type: "POST",
+      data: { accesstoken: accessToken },
+    })
+    for (let i = 0; i < repliesArr.length; i++) {
+      if (repliesArr[i].id === id) {
+        repliesArr[i].is_uped = !repliesArr[i].is_uped;
+        setRepliesArr((repliesArr) => [...repliesArr]);
+        break;
+      }
+    }
+  }
   return (
     <div className="repiles">
       <Card
@@ -71,7 +87,23 @@ const Replies: React.FC<propsType> = (props) => {
         {repliesArr.map((item, index) => (
           <Comment
             key={index}
-            actions={actions}
+            actions={
+              item.is_uped
+                ? [
+                    <LikeFilled
+                      onClick={() => {
+                        handleLike(item.id);
+                      }}
+                    />,
+                  ]
+                : [
+                    <LikeOutlined
+                      onClick={() => {
+                        handleUnLike(item.id);
+                      }}
+                    />,
+                  ]
+            }
             author={item.author.loginname}
             avatar={
               <Avatar

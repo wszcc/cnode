@@ -5,13 +5,16 @@ import {
   REQUEST_SAGE_DETAIL_DATA,
   REQUEST_SAGA_USER_INFO,
   REQUEST_SAGA_COLLECT_THEME,
-  REQUEST_SAGA_MESSAGE
+  REQUEST_SAGA_MESSAGE,
+  ERROR_TYPE,
 } from "./actionTypes";
 import { AxiosResponse } from "axios";
+
 type actionType = {
   type: string;
   payload?: any;
 };
+
 // 主页数据的sagaAction
 export function* fetcHomePagehData(action: actionType) {
   const { url, type, data } = action.payload;
@@ -23,7 +26,7 @@ export function* fetcHomePagehData(action: actionType) {
     });
     yield put({ type: REQUEST_SAGA_HOMEPAGE_DATA, res });
   } catch (error) {
-    yield put({ type: "FETCH_FAILED", error });
+    yield put({ type: ERROR_TYPE, error });
   }
 }
 
@@ -38,7 +41,7 @@ export function* fetchDetailPageData(action: actionType) {
     });
     yield put({ type: REQUEST_SAGE_DETAIL_DATA, res });
   } catch (error) {
-    yield put({ type: "FETCH_FAILED", error });
+    yield put({ type: ERROR_TYPE, error });
   }
 }
 
@@ -53,7 +56,7 @@ export function* fetchUserInfo(action: actionType) {
     });
     yield put({ type: REQUEST_SAGA_USER_INFO, res });
   } catch (error) {
-    yield put({ type: "FETCH_FAILED", error });
+    yield put({ type: ERROR_TYPE, error });
   }
 }
 
@@ -66,9 +69,9 @@ export function* fetchUserCollect(action: actionType) {
       type,
       data,
     });
-    yield put({ type:REQUEST_SAGA_COLLECT_THEME, res });
+    yield put({ type: REQUEST_SAGA_COLLECT_THEME, res });
   } catch (error) {
-    yield put({ type: "FETCH_FAILED", error });
+    yield put({ type: ERROR_TYPE, error });
   }
 }
 
@@ -81,8 +84,8 @@ export function* fetchMessage(action: actionType) {
       type,
       data,
     });
-    yield put({ type:REQUEST_SAGA_MESSAGE, res });
+    yield put({ type: REQUEST_SAGA_MESSAGE, res });
   } catch (error) {
-    yield put({ type: "FETCH_FAILED", error });
+    yield put({ type: ERROR_TYPE, error });
   }
 }

@@ -16,6 +16,7 @@ type propsType = {
   dispatchDetailDataAction: (payload: object) => void;
   detailData: any;
 };
+
 const TopicDetail: React.FC<propsType> = (props: propsType) => {
   const paramsStr=props.match.params.id
   const [topicId,isEdit=false] =paramsStr.split('-')

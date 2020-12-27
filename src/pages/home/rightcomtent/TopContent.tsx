@@ -5,6 +5,7 @@ import { Card } from "antd";
 import { Link } from 'react-router-dom'
 import profile from "../../../assets/imgs/profile.png";
 import { accessToken } from '../../../store/actionTypes'
+
 type propsType = {
   dispatchLoginAction: () => void;
   isLogin: boolean;
@@ -31,7 +32,6 @@ const TopContetn: React.FC<propsType> = (props) => {
             style={{ width: 250, marginTop: -15 }}
           >
             <p className='img'><Link to='/profile'><img title='去我的主页看看' src={profile} alt=""/></Link><span>曾川</span></p>
-            <p className='score'>积分:0</p>
             <p className='title'>“这家伙很懒,什么个性签名都没有留下.”</p>
             
           </Card>

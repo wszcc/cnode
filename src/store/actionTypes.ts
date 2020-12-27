@@ -1,6 +1,9 @@
 // 我的accessToken
 export const accessToken = "85f65af3-8985-482a-8181-49c7d14e1bec";
 
+// 发生错误的type
+export const ERROR_TYPE = "ERROR_TYPE";
+
 // 主页数据
 export const REQUEST_HOMEPAGE_DATA = "REQUEST_HOMEPAGE_DATA";
 export const REQUEST_SAGA_HOMEPAGE_DATA = "REQUEST_SAGA_HOMEPAGE_DATA";
@@ -27,5 +30,5 @@ export const REQUEST_SAGA_COLLECT_THEME = "REQUEST_SAGA_COLLECT_THEME";
 export const REQUEST_USER_THEME_INFO = "REQUEST_USER_THEME_INFO";
 
 // 请求已读消息和未读消息
-export const REQUEST_MESSAGE = 'REQUEST_MESSAGE'
-export const REQUEST_SAGA_MESSAGE = 'REQUEST_SAGA_MESSAGE'
+export const REQUEST_MESSAGE = "REQUEST_MESSAGE";
+export const REQUEST_SAGA_MESSAGE = "REQUEST_SAGA_MESSAGE";

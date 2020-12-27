@@ -17,7 +17,6 @@ type propsType = {
 
 const Header: React.FC<propsType & RouteComponentProps> = (props) => {
   const { titleData, isLogin, isEdit } = props;
-  console.log(titleData);
   const [jusIsCollect, setIsCollect] = useState(titleData.data.data.is_collect);
   // 判断收藏按钮状态
   function isCollect(isLogin: boolean, isCollect: boolean): ReactNode {

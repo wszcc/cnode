@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import { logoutAction,loginAction } from '../../store/actionCreator'
 import { withRouter,RouteComponentProps } from 'react-router'
 import {accessToken} from '../../store/actionTypes'
+import { Link } from 'react-router-dom'
 type propsType =RouteComponentProps&{
     isLogin:boolean,
     dispatchLogoutAction:()=>void,
@@ -30,7 +31,9 @@ const Navigation:React.FC<propsType> =(props)=>{
             <img src={logoImg} alt=""/>
             <Input bordered={false} size='small' className='input' prefix={<SearchOutlined />} />
             <ul>
-                <li>首页</li>
+                <Link to='/home' style={{
+                    color:'#C5CEB3'
+                }}><li>首页</li></Link>
                 {
                     props.isLogin?<li onClick={handleToMessage}>未读消息</li>:''
                 }
