@@ -24,7 +24,7 @@ const Message: React.FC<propsType & RouteComponentProps> = (props) => {
         accesstoken: accessToken,
       },
     });
-  }, [""]);
+  }, []);
   function handleHasRead(id: string) {
     props.history.push(`/topic/detail/${id}-${true}`);
   }

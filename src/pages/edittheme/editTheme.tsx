@@ -46,7 +46,7 @@ class createTheme extends React.Component<propsType&RouteComponentProps, stateTy
     this.setState({ editor,title });
   }
   async dispatchCreateTheme(params: createThemeTypes) {
-    const res = await requestCreateTheme({
+    await requestCreateTheme({
       url: "/topics/update",
       type: "POST",
       data: params,
@@ -105,9 +105,9 @@ class createTheme extends React.Component<propsType&RouteComponentProps, stateTy
             style={{ width: 1070, margin: 20, marginLeft: 0 }}
           />
           <div id="edit"></div>
-          <a className="submit" onClick={this.editTheme}>
+          <span className="submit" onClick={this.editTheme}>
             提交
-          </a>
+          </span>
         </Card>
         <div className="right-comtent">
           <Card

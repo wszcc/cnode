@@ -23,6 +23,9 @@
             text-align: center;
             line-height: 30px;
             border-radius: 4px;
+            &:hover{
+                cursor: pointer;
+            }
         }
         .cancelCollect{
             position: absolute;
@@ -36,6 +39,9 @@
             text-align: center;
             line-height: 30px;
             border-radius: 4px;
+            &:hover{
+                cursor: pointer;
+            }
         }
         .info{
             line-height: 30px;

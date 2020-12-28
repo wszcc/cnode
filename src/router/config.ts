@@ -5,7 +5,9 @@ import createTheme from '../pages/createtheme/createTheme'
 import myCollect from '../pages/mycollect/myCollect'
 import editTheme from '../pages/edittheme/editTheme'
 import Message from '../pages/message/Message'
-export default [
+
+
+const routerView =[
   {
     path: "/home",
     component: Home,
@@ -35,3 +37,4 @@ export default [
     component: Message,
   },
 ];
+export default routerView

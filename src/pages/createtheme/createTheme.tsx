@@ -5,6 +5,7 @@ import { Select, Card, Input } from "antd";
 import Navigation from "../../components/navigation/Navigation";
 import { accessToken } from "../../store/actionTypes";
 import requestCreateTheme from "../../apis/index";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 const { Option } = Select;
 type createThemeTypes = {
   accesstoken: string;
@@ -17,10 +18,13 @@ type stateType = {
   tab: string;
   content: string;
   editor: any;
-  title:string
+  title: string;
 };
 type propsType = {};
-class createTheme extends React.Component<propsType, stateType> {
+class createTheme extends React.Component<
+  propsType & RouteComponentProps,
+  stateType
+> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -28,7 +32,7 @@ class createTheme extends React.Component<propsType, stateType> {
       tab: "share",
       content: "",
       editor: null,
-      title:''
+      title: "",
     };
   }
   componentDidMount() {
@@ -43,7 +47,7 @@ class createTheme extends React.Component<propsType, stateType> {
       type: "POST",
       data: params,
     });
-    console.log(res)
+    this.props.history.replace(`/topic/detail/${res.data.topic_id}-${true}`);
   }
   createTheme = () => {
     this.setState(
@@ -61,12 +65,12 @@ class createTheme extends React.Component<propsType, stateType> {
       tab: value,
     });
   };
-  handleTitleChange=()=>{
-    let inputValue:any =document.getElementById('title-input')
+  handleTitleChange = () => {
+    let inputValue: any = document.getElementById("title-input");
     this.setState({
-      title:inputValue.value
-    })
-  }
+      title: inputValue.value,
+    });
+  };
   render() {
     return (
       <div className="create-theme">
@@ -89,15 +93,15 @@ class createTheme extends React.Component<propsType, stateType> {
             </Select>
           </div>
           <Input
-          onChange={this.handleTitleChange}
+            onChange={this.handleTitleChange}
             id="title-input"
             placeholder="请输入标题"
             style={{ width: 1070, margin: 20, marginLeft: 0 }}
           />
           <div id="edit"></div>
-          <a className="submit" onClick={this.createTheme}>
+          <span className="submit" onClick={this.createTheme}>
             提交
-          </a>
+          </span>
         </Card>
         <div className="right-comtent">
           <Card
@@ -124,4 +128,4 @@ class createTheme extends React.Component<propsType, stateType> {
   }
 }
 
-export default createTheme;
+export default withRouter(createTheme);

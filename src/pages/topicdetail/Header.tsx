@@ -25,15 +25,15 @@ const Header: React.FC<propsType & RouteComponentProps> = (props) => {
     } else {
       if (isCollect) {
         return (
-          <a className="cancelCollect" onClick={handelCancelCollect}>
+          <span className="cancelCollect" onClick={handelCancelCollect}>
             取消收藏
-          </a>
+          </span>
         );
       } else {
         return (
-          <a className="collect" onClick={handleCollect}>
+          <span className="collect" onClick={handleCollect}>
             收藏
-          </a>
+          </span>
         );
       }
     }

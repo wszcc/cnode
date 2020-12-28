@@ -27,7 +27,7 @@ const Profile: React.FC<propsType> = ({
   userInfo = { data: { data: { githubUsername: "zc" } } },
   dispatchUserInfo,
   dispatchUserCollect,
-  collectTheme = { data: { success: false ,data:[]} },
+  collectTheme = { data: { success: false, data: [] } },
 }) => {
   useEffect(() => {
     dispatchUserInfo({
@@ -57,7 +57,9 @@ const Profile: React.FC<propsType> = ({
               <img src={ProfileImg} alt="" />
               <span>{userInfo.data.data.loginname}</span>
             </p>
-            <Link to='/mycollect'><p>我的收藏 {collectTheme.data.data.length}</p></Link>
+            <Link to="/mycollect">
+              <p>我的收藏 {collectTheme.data.data.length}</p>
+            </Link>
             <p>{userInfo.data.data.score} 积分</p>
             <p>注册时间 {getTime(userInfo.data.data.create_at)}</p>
           </Card>
@@ -68,7 +70,7 @@ const Profile: React.FC<propsType> = ({
           >
             {userInfo.data.data.recent_topics
               ? userInfo.data.data.recent_topics.map((item: any) => (
-                  <li key={item.id}>
+                  <li className="item" key={item.id}>
                     <div className="img">
                       <img src={item.author.avatar_url} alt="" />
                     </div>
@@ -97,7 +99,7 @@ const Profile: React.FC<propsType> = ({
           >
             {userInfo.data.data.recent_replies
               ? userInfo.data.data.recent_replies.map((item: any) => (
-                  <li key={item.id}>
+                  <li className="item" key={item.id}>
                     <div className="img">
                       <img src={item.author.avatar_url} alt="" />
                     </div>

@@ -15,7 +15,7 @@ type routerItemType = {
 const RouterView: React.FC = (): any => {
   return (
     <Router>
-      {/* <Redirect to="/home"></Redirect> */}
+      <Redirect to="/home"></Redirect>
       <Switch>
         {routerMap.map((item: routerItemType,index:number) => (
           <Route key={index} path={item.path} component={item.component}></Route>
